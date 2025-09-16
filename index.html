@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EX - Il compleanno dello Chef</title>
+  </head>
+  <body>
+    <h1>EX - Il compleanno dello Chef Modulo 4</h1>
+    <h2><b>Consegna</b></h2>
+    <ul>
+      In questo esercizio, utilizzerai
+      <b>async/await</b>
+
+      per creare la funzione
+      <b>getChefBirthday(id)</b
+      >. Questa funzione accetta un
+      <b>ids</b>
+      di una ricetta e deve:
+      <br />
+      <br />
+
+      <li>
+        Recuperare la ricetta da <b>https://dummyjson.com/recipes/{id}</b>
+      </li>
+      <br />
+      <li>Estrarre la proprietà <b>userId </b> dalla ricetta</li>
+      <br />
+      <li>
+        Usare <b>userId </b> per ottenere le informazioni dello <b>chef </b> da
+        <b>https://dummyjson.com/users/{userId}</b>
+      </li>
+      <br />
+      <li>Restituire la <b>data di nascita</b> dello chef</li>
+      <br />
+      <li>
+        <h2><b>Note del docente</b></h2>
+      </li>
+      Scrivi la funzione
+      <b>getChefBirthday(id)</b
+      >, che deve:
+      <br />
+
+      <li>Essere asincrona (async).</li>
+      <br />
+      <li>Utilizzare await per chiamare le API.</li>
+      <br />
+      <li>Restituire una Promise con la data di nascita dello chef.</li>
+      <br />
+      <li>Gestire gli errori con try/catch</li>
+      <br />
+      <h3><b>Esempio di utilizzo</b></h3>
+      <p>
+        getChefBirthday(1) <br />
+
+        .then(birthday =
+        <!-- ricorda arrovw funxtion => -->
+        console.log("Data di nascita dello chef:", birthday)) <br />
+        .catch(error =
+        <!-- ricorda arrovw funxtion => -->
+        console.error("Errore:", error.message));
+      </p>
+      <h3><b>Esempio di output atteso</b></h3>
+      <p>Data di nascita dello chef: 1990-06-15</p>
+      <br />
+      <h3><b>🎯 Bonus 1</b></h3>
+      Attualmente, se la prima richiesta non trova una ricetta, la seconda
+      richiesta potrebbe comunque essere eseguita causando errori a cascata.
+      <br />
+      <br />
+
+      Modifica getChefBirthday(id) per intercettare eventuali errori prima di
+      fare la seconda richiesta.
+    </ul>
+
+    <script src="snack-async-await.js"></script>
+  </body>
+</html>
