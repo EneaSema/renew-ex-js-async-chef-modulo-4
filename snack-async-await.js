@@ -37,10 +37,14 @@
 //   birthday = resolveUser.birthDate;
 //   return birthday;
 // }
-
-// getChefBirthday(1)
-//   .then((birthday) => console.log("Data di nascita dello chef:", birthday))
-//   .catch((error) => console.error("Errore:", error.messagge));
+// (async () => {
+//   try {
+//     const birthday = getChefBirthday(1);
+//     console.log("Data di nascita dello chef:", birthday);
+//   } catch (error) {
+//     console.error("Errore:", error.messagge);
+//   }
+// })();
 
 // 🎯 Bonus 1
 // Attualmente, se la prima richiesta non trova una ricetta,
@@ -50,6 +54,59 @@
 
 // SOLUZIONE
 
+// async function getChefBirthday(id) {
+//   let recipe;
+//   try {
+//     const responseRecipe = await fetch(`https://dummyjson.com/recipes/${id}`);
+//     recipe = await responseRecipe.json();
+//     console.log(recipe);
+//   } catch (error) {
+//     console.error(error);
+//     throw new Error(`Non riesco a recuperare la ricetta con id numero: ${id}`);
+//   }
+//   if (recipe.messagge) {
+//     throw new Error("Ricetta con id:", id, "non trovata!");
+//   }
+//   const userId = recipe.userId;
+//   let chef;
+
+//   try {
+//     const responseUser = await fetch(`https://dummyjson.com/users/${userId}`);
+//     chef = await responseUser.json();
+//     console.log(chef);
+//   } catch (error) {
+//     console.error(error);
+//     throw new Error(
+//       "Non riesco a recuperare lo chef con id numero:",
+//       chef.messagge
+//     );
+//   }
+//   if (chef.messagge) {
+//     throw new Error("Non ho recuperato lo chef con id= ", userId);
+//   }
+
+//   birthday = chef.birthDate;
+
+//   return birthday;
+// }
+
+// (async () => {
+//   try {
+//     const birthday = await getChefBirthday(1);
+
+//     console.log("Data di nascita dello chef:", birthday);
+//   } catch (error) {
+//     console.error("Errore:", error.messagge);
+//   }
+// })();
+
+// 🎯 Bonus 2
+
+// Utilizza la libreria dayjs per formattare la data di nascita nel formato giorno/mese/anno.
+
+// Esempio di output atteso con formattazione
+// Data di nascita dello chef: 15/06/1990
+
 async function getChefBirthday(id) {
   let recipe;
   try {
@@ -57,37 +114,45 @@ async function getChefBirthday(id) {
     recipe = await responseRecipe.json();
     console.log(recipe);
   } catch (error) {
-    console.error(error);
-    throw new Error(`non riesco a recuperare l'id numero: ${id}`);
+    console.error("ERRORE!", error.messagge);
+    throw new Error(
+      "Presente Errore! Non riesco a recuperare l'id numero: ",
+      id
+    );
   }
   if (recipe.messagge) {
-    throw new Error(recipe.messagge);
+    throw new Error("Presente Errore!", recipe.messagge);
   }
   const userId = recipe.userId;
   let chef;
-
   try {
-    const responseUser = await fetch(`https://dummyjson.com/users/${userId}`);
-    chef = await responseUser.json();
+    const responseChef = await fetch(`https://dummyjson.com/users/${userId}`);
+    chef = await responseChef.json();
     console.log(chef);
   } catch (error) {
-    console.error(error);
-    throw new Error(chef.messagge);
+    console.error("ERRORE!", error.messagge);
+    throw new Error("Presente Errore!", chef.messagge);
   }
   if (chef.messagge) {
-    throw new Error("Non ho recuperato lo chef con id= ", userId);
+    throw new Error(
+      "Presente Errore! Non ho recuperato lo chef con id= ",
+      userId
+    );
   }
 
-  birthday = chef.birthDate;
+  const birthday = dayjs(chef.birthDate);
+  const birthdayFormat = birthday.format(`DD/MM/YYYY`);
 
-  return birthday;
+  // const birthdayFormat = birthday.format(DD / MM / YYYY);
+
+  // console.log(birthdayFormat);
+  return birthdayFormat;
 }
 
 (async () => {
   try {
     const birthday = await getChefBirthday(1);
-
-    console.log("Data di nascita dello chef:", birthday);
+    console.log("La data di nascità dello chef selezionato:", birthday);
   } catch (error) {
     console.error("Errore:", error.messagge);
   }
