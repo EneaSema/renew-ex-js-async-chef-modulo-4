@@ -9,18 +9,20 @@
   <body>
     <h1>EX - Il compleanno dello Chef Modulo 4</h1>
     <h2><b>Consegna</b></h2>
-    <ul>
+
+    <p>
       In questo esercizio, utilizzerai
       <b>async/await</b>
 
       per creare la funzione
-      <b>getChefBirthday(id)</b
-      >. Questa funzione accetta un
+      <b>getChefBirthday(id)</b>. Questa funzione accetta un
       <b>ids</b>
       di una ricetta e deve:
       <br />
       <br />
+    </p>
 
+    <ul>
       <li>
         Recuperare la ricetta da <b>https://dummyjson.com/recipes/{id}</b>
       </li>
@@ -33,15 +35,13 @@
       </li>
       <br />
       <li>Restituire la <b>data di nascita</b> dello chef</li>
-      <br />
-      <li>
-        <h2><b>Note del docente</b></h2>
-      </li>
-      Scrivi la funzione
-      <b>getChefBirthday(id)</b
-      >, che deve:
-      <br />
+    </ul>
+    <br />
 
+    <h2><b>Note del docente</b></h2>
+
+    <p>Scrivi la funzione <b>getChefBirthday(id)</b>, che deve: <br /></p>
+    <ul>
       <li>Essere asincrona (async).</li>
       <br />
       <li>Utilizzare await per chiamare le API.</li>
@@ -50,37 +50,47 @@
       <br />
       <li>Gestire gli errori con try/catch</li>
       <br />
-      <h3><b>Esempio di utilizzo</b></h3>
-      <p>
-        getChefBirthday(1) <br />
+    </ul>
 
-        .then(birthday =
-        <!-- ricorda arrovw funxtion => -->
-        console.log("Data di nascita dello chef:", birthday)) <br />
-        .catch(error =
-        <!-- ricorda arrovw funxtion => -->
-        console.error("Errore:", error.message));
-      </p>
-      <h3><b>Esempio di output atteso</b></h3>
-      <p>Data di nascita dello chef: 1990-06-15</p>
-      <br />
-      <h3><b>🎯 Bonus 1</b></h3>
+    <h3><b>Esempio di utilizzo</b></h3>
+    <p>
+      getChefBirthday(1) <br />
+
+      .then(birthday =
+      <!-- ricorda arrovw funxtion => -->
+      console.log("Data di nascita dello chef:", birthday)) <br />
+      .catch(error =
+      <!-- ricorda arrovw funxtion => -->
+      console.error("Errore:", error.message));
+    </p>
+
+    <h3><b>Esempio di output atteso</b></h3>
+
+    <p>Data di nascita dello chef: 1990-06-15</p>
+    <br />
+
+    <h3><b>🎯 Bonus 1</b></h3>
+    <p>
       Attualmente, se la prima richiesta non trova una ricetta, la seconda
       richiesta potrebbe comunque essere eseguita causando errori a cascata.
-      <br />
-      <br />
+    </p>
+    <br />
+    <br />
 
+    <p>
       Modifica getChefBirthday(id) per intercettare eventuali errori prima di
       fare la seconda richiesta.
-      <h3><b>🎯 Bonus 2</b></h3>
+    </p>
+    <h3><b>🎯 Bonus 2</b></h3>
+    <p>
       Utilizza la libreria
       <b>dayjs </b>
       per formattare la data di nascita nel formato giorno/mese/anno.
       <br />
       <br />
       <b>Esempio di output atteso con formattazione</b>
-      <p>Data di nascita dello chef: 15/06/1990</p>
-    </ul>
+      Data di nascita dello chef: 15/06/1990
+    </p>
 
     <script src="snack-async-await.js"></script>
   </body>
